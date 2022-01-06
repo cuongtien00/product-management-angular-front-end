@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 50px">
+      <mat-card>
+        <form class="form-create" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+          <mat-card-title style="text-align: center">Create New Product</mat-card-title>
+
+          <!--          Name-->
+          <mat-form-field appearance="outline" style="width: 350px" *ngIf="product">
+            <mat-label>Name</mat-label>
+            <input
+              name="name"
+              [(ngModel)]="form.name"
+              matInput
+              placeholder="Placeholder"
+              required
+            >
+            <mat-icon color="accent" matSuffix>inventory_2</mat-icon>
+          </mat-form-field>
+          <br>
+          <!--          Price-->
+          <mat-form-field appearance="outline" style="width: 350px" *ngIf="product">
+            <mat-label>Price</mat-label>
+            <input
+              name="price"
+              [(ngModel)]="form.price"
+              matInput
+              placeholder="Placeholder"
+              required
+            >
+            <mat-icon color="accent" matSuffix>attach_money</mat-icon>
+          </mat-form-field>
+          <br>
+          <!--          Description-->
+          <mat-form-field appearance="outline" style="width: 350px" *ngIf="product">
+            <mat-label>Description</mat-label>
+            <input
+              name="description"
+              [(ngModel)]="form.description"
+              matInput
+              placeholder="Placeholder"
+              required
+            >
+            <mat-icon color="accent" matSuffix>description</mat-icon>
+          </mat-form-field>
+          <br>
+          <!--          Quantity-->
+          <mat-form-field appearance="outline" style="width: 350px" *ngIf="product">
+            <mat-label>Quantity</mat-label>
+            <input
+              name="quantity"
+              [(ngModel)]="form.quantity"
+              matInput
+              placeholder="Placeholder"
+              required
+            >
+            <mat-icon color="accent" matSuffix>numbers</mat-icon>
+          </mat-form-field>
+          <br>
+          <!--          Category-->
+          <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select name="category"
+                        [(ngModel)]="form.category"
+                        [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let cate of categories" value="{{cate.id}}">
+                {{cate.name}}
+              </mat-option>
+            </mat-select>
+            <mat-icon color="accent" matSuffix>category</mat-icon>
+          </mat-form-field>
+          <br>
+          <!--          Avatar-->
+          <mat-form-field appearance="outline" style="width: 350px" *ngIf="product">
+            <input
+              matInput
+              hidden
+            >
+            <app-upload-firebase (giveUrl)="uploadFile($event)"></app-upload-firebase>
+            <mat-icon color="accent" matSuffix>image</mat-icon>
+          </mat-form-field>
+          <br>
+          <button mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Save Changes
+          </button>
+        </form>
+
+      </mat-card>
+    </div>
+  </div>
+</div>
+

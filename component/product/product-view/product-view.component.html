@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 20px">
+      <mat-card style="margin: 100px 0; text-align: center">
+        <form class="form-login" #f="ngForm" (ngSubmit)="f.form.valid && update()">
+          <!--          <mat-error class="alert alert-primary" *ngIf="f.form.invalid ">{{status}}</mat-error>-->
+          <mat-card-title style="text-align: center">Detail</mat-card-title>
+          <!--          Id-->
+          <mat-form-field appearance="outline" style="width: 350px" *ngIf="product">
+            <mat-label>Id</mat-label>
+            <input
+              name="id"
+              [(ngModel)]="product.id"
+              [ngModelOptions]="{standalone: true}"
+              matInput
+              placeholder="Placeholder"
+              required
+              disabled>
+            <mat-icon color="accent" matSuffix>format_list_numbered_rtl</mat-icon>
+          </mat-form-field>
+          <br>
+          <!--          Name-->
+          <mat-form-field appearance="outline" style="width: 350px" *ngIf="product">
+            <mat-label>Name</mat-label>
+            <input
+              name="name"
+              [(ngModel)]="product.name"
+              [ngModelOptions]="{standalone: true}"
+              matInput
+              placeholder="Placeholder"
+              required
+            >
+            <mat-icon color="accent" matSuffix>inventory_2</mat-icon>
+          </mat-form-field>
+          <br>
+          <!--          Price-->
+          <mat-form-field appearance="outline" style="width: 350px" *ngIf="product">
+            <mat-label>Price</mat-label>
+            <input
+              name="price"
+              [(ngModel)]="product.price"
+              [ngModelOptions]="{standalone: true}"
+              matInput
+              placeholder="Placeholder"
+              required
+            >
+            <mat-icon color="accent" matSuffix>attach_money</mat-icon>
+          </mat-form-field>
+          <br>
+          <!--          Description-->
+          <mat-form-field appearance="outline" style="width: 350px" *ngIf="product">
+            <mat-label>Description</mat-label>
+            <input
+              name="description"
+              [(ngModel)]="product.description"
+              [ngModelOptions]="{standalone: true}"
+              matInput
+              placeholder="Placeholder"
+              required
+            >
+            <mat-icon color="accent" matSuffix>description</mat-icon>
+          </mat-form-field>
+          <br>
+          <!--          Quantity-->
+          <mat-form-field appearance="outline" style="width: 350px" *ngIf="product">
+            <mat-label>Quantity</mat-label>
+            <input
+              name="quantity"
+              [(ngModel)]="product.quantity"
+              [ngModelOptions]="{standalone: true}"
+              matInput
+              placeholder="Placeholder"
+              required
+            >
+            <mat-icon color="accent" matSuffix>numbers</mat-icon>
+          </mat-form-field>
+          <br>
+
+          <mat-form-field appearance="outline" style="width: 350px" *ngIf="product">
+            <mat-label>Category</mat-label>
+            <mat-select name="category"
+              [(ngModel)]="product.category"
+                        [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let cate of categories" [value]="cate.id">
+                {{cate.name}}
+              </mat-option>
+            </mat-select>
+            <mat-icon color="accent" matSuffix>category</mat-icon>
+          </mat-form-field>
+          <br>
+
+          <!--          Avatar-->
+          <mat-form-field appearance="outline" style="width: 350px; text-align: center" *ngIf="product">
+            <input
+              hidden
+              matInput
+              placeholder="Placeholder"
+            >
+
+              <app-upload-firebase
+                                   (giveUrl)="uploadFile($event)"
+              ></app-upload-firebase>
+            <img [src]="product.avatar" style="width: 200px" >
+            <mat-icon color="accent" matSuffix >image</mat-icon>
+          </mat-form-field>
+          <br>
+
+          <button mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Save Changes
+            <mat-icon color="accent" matSuffix>save</mat-icon>
+          </button>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+

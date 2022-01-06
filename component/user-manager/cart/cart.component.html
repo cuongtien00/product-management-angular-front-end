@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top:50px">
+      <mat-card style="margin: 50px 0">
+        <mat-card-title>
+          <mat-icon style="width: 200px" ><span class="material-icons-outlined">
+shopping_cart
+</span></mat-icon>
+        </mat-card-title>
+        <mat-nav-list>
+          <mat-list-item *ngFor="let product of products">
+            <a matLine href="...">{{ product.name }}</a>
+            <a matLine href="...">{{ product.price|currency}}</a>
+            <button mat-icon-button >
+              <mat-icon>add</mat-icon>
+            </button>
+            <button mat-icon-button >
+              <mat-icon>remove</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-nav-list>
+        <p>
+          Total : {{sumOfPrice|currency}}
+        </p>
+
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+

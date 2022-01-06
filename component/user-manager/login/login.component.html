@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 20px">
+      <mat-card style="margin: 20px 0">
+        <form class="form-login" #f="ngForm" (ngSubmit)="f.form.valid && login()">
+          <mat-error class="alert alert-primary" *ngIf="f.form.invalid ">{{status}}</mat-error>
+          <mat-card-title style="text-align: center">Login</mat-card-title>
+          <!--          Username-->
+          <mat-form-field appearance="outline" style="width: 350px">
+            <mat-label>Username</mat-label>
+            <input name="username"
+                   [(ngModel)]="form.username"
+                   matInput
+                   placeholder="Placeholder"
+                   required
+                   #username="ngModel">
+            <mat-error *ngIf="username.hasError('required')">The username is required!</mat-error>
+            <mat-icon color="accent" matSuffix>person_outline</mat-icon>
+          </mat-form-field>
+          <br>
+          <!--          Password-->
+          <mat-form-field appearance="outline" style="width: 350px">
+            <mat-label>Enter your Password</mat-label>
+            <input [type]="hide ? 'password' : 'text'"
+                   name="password"
+                   [(ngModel)]="form.password"
+                   matInput
+                   placeholder="Placeholder"
+                   required
+                   #password="ngModel"
+            >
+            <button color="accent" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password.hasError('required')">The password is required!</mat-error>
+          </mat-form-field>
+          <br>
+          <button mat-stroked-button color = "accent"  class="mat-button-toggle-group btn-outline-primary">Login
+          <mat-icon color="accent" matSuffix>login</mat-icon>
+          </button>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

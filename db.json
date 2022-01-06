@@ -1,0 +1,45 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "IPhoneX",
+      "price": 1000,
+      "description": "New",
+      "category": {
+        "id": 1,
+        "name": "Smartphone"
+      }
+    },
+    {
+      "name": "IPhone 12",
+      "price": 1100,
+      "description": "New",
+      "category": {
+        "id": 1
+      },
+      "id": 2
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Smartphone"
+    },
+    {
+      "id": 2,
+      "name": "TV"
+    },
+    {
+      "id": 3,
+      "name": "CPU"
+    },
+    {
+      "id": 4,
+      "name": "RAM"
+    },
+    {
+      "name": "SSD",
+      "id": 5
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 50px">
+      <mat-card style="margin: 50px 0; text-align: center">
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element, let i = index"> {{i+1}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td routerLink="/products/{{element.id}}" mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="price" >
+              <th mat-header-cell *matHeaderCellDef> Price </th>
+              <td mat-cell color="accent"  *matCellDef="let element"> {{element.price|currency}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef> Description </th>
+              <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef> Quantity </th>
+              <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="avatar">
+              <th mat-header-cell *matHeaderCellDef> Image </th>
+              <td style="width: 100px; height: 70px" mat-cell *matCellDef="let element"><img style="width: 100%" src="{{element.avatar}}" alt=""></td>
+            </ng-container>
+
+            <ng-container matColumnDef="category">
+              <th mat-header-cell *matHeaderCellDef> Category </th>
+              <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                         showFirstLastButtons
+                         aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
