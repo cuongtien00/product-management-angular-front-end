@@ -36,23 +36,28 @@ export class LoginComponent implements OnInit,OnDestroy {
   )
     // @ts-ignore
     this.subscription  = this.authService.signIn(this.signInForm).subscribe(data => {
+      if (data.token != undefined) {
+          this.tokenService.setToken(data.token);
+          this.tokenService.setName(data.name);
+          this.tokenService.setRole(data.roles);
+          this.tokenService.setAvatar(data.avatar)
+          this.tokenService.setUserId(data.id)
+          console.log('jwtResponse: ' +JSON.stringify(data))
+          // Chuyen trang sau do reload
+          this.router.navigate(["/user-account"]).then(()=>{
+            window.location.reload();
+          });
+      }
+      else {
+        alert(data.message);
 
-     if (data.token != undefined) {
-       this.tokenService.setToken(data.token);
-       this.tokenService.setName(data.name);
-       this.tokenService.setRole(data.roles);
-       this.tokenService.setAvatar(data.avatar)
-       this.tokenService.setUserId(data.id)
-       console.log('jwtResponse: ' +JSON.stringify(data))
-       // Chuyen trang sau do reload
-       this.router.navigate(["/user-account"]).then(()=>{
-         window.location.reload();
-       });
+      }
 
-     }
+     // }
     },error => {
       this.authService.handleError(error);
-      console.log(error);
+      alert(error);
+      console.log(JSON.parse(error));
     })
 
 

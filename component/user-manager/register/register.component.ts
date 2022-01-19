@@ -62,7 +62,7 @@ console.log(this.signUpForm);
       console.log(`data: ` +JSON.stringify(data.message));
     },error => {
       this.authService.handleError(error);
-    })
+    });
 
   }
 
