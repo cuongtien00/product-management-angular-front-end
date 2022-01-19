@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top:  50px">
+      <mat-card style="margin: 50px 0">
+        <div style="width: 500px;height: 500px; border: 1px solid black; text-align:  center">
+          <mat-card-title>Messenger</mat-card-title>
+          <div *ngFor="let mes of socketService.messages">
+            <p style="border: 1px solid black; border-radius: 10px; margin: 10px; text-align: left; padding: 2px">
+              <span>time: {{mes.time|date}}</span>
+              <br>
+              <span style="color: red">{{mes.sender.name}}:</span> {{mes.content}}
+            </p>
+          </div>
+
+          <form #f="ngForm"  (ngSubmit)="f.form.valid && createMessage()">
+
+            <input type="text" name="content" [(ngModel)]="form.content">
+            <button type="submit" class="btn btn-primary">Send</button>
+          </form>
+        </div>
+        <button (click)="outRoom()">Out </button>
+      </mat-card>
+    </div>
+</div>
+</div>
+
